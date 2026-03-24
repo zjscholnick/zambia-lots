@@ -4,9 +4,9 @@ Downloads the Zambia pending land lots WFS layer in paged chunks, merges the par
 
 ## How it works
 
-1. **Fetch & chunk** — pages through the WFS endpoint 5000 features at a time, writing each page as a `.geoparquet` part file. Parts are written incrementally so a crash mid-run doesn't lose progress.
-2. **Merge** — streams all parts into a single `pending_lots.geoparquet` via PyArrow, preserving GeoParquet geometry metadata.
-3. **Clean** — drops null geometries and features whose centroid falls outside Zambia's bounding box.
+1. **Fetch & chunk** — pages through the WFS endpoint 5000 features at a time, writing each page as a `.geoparquet` part file.
+2. **Merge** — streams all parts into a single `pending_lots.geoparquet` via PyArrow.
+3. **Clean** — drops null geometries and features whose centroid falls outside a generous bounding box of Zambia (only a few weird datapoints).
 
 ## Run locally
 
